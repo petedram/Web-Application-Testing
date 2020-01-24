@@ -3,6 +3,16 @@ import { Button, Header } from 'semantic-ui-react';
 import Display from './Display';
 
 
+export const addBall = (ballCount) => {
+    console.log('add ball')
+    if (ballCount === 3) {
+        return 0
+    } else {
+        return ballCount + 1;
+    };
+    
+}
+
 export default function Dashboard(){
 
 const [ballCount, setBallCount] = useState(0);
@@ -11,23 +21,10 @@ const [foulCount, setFoulCount] = useState(0);
 const [hitCount, setHitCount] = useState(0);
 
 
-// useEffect(() => {
-//     console.log('useEffect', ballCount);
-
-//     }, [ballCount]);
 
 
 
-const addBall = () => {
-    console.log('add ball')
-    if (ballCount === 3) {
-        setBallCount(0)
-        setStrikeCount(0)
-    } else {
-        setBallCount(ballCount + 1);
-    };
-    
-}
+addBall()
 
 const addStrike = () => {
     console.log('add strike')
@@ -65,7 +62,7 @@ return (
         <br />
         <section className='dash_buttons'>
             <Header block>Dashboard</Header>
-            <Button title='Ball' onClick={addBall}>Ball</Button>
+            <Button title='Ball' onClick={() => {setBallCount(addBall(ballCount))}}>Ball</Button>
             <Button title='Strike' onClick={addStrike}>Strike</Button>
             <Button title='Foul' onClick={addFoul}>Foul</Button>
             <Button title='Hit' onClick={addHit}>Hit</Button>
